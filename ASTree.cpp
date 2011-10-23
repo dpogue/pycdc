@@ -1858,6 +1858,23 @@ PycRef<ASTNode> BuildFromCode(PycRef<PycCode> code, PycModule* mod)
                 }
             }
             break;
+        case Pyc::STORE_MAP:
+            {
+                PycRef<ASTNode> value = stack.top();
+                stack.pop();
+                PycRef<ASTNode> key = stack.top();
+                stack.pop();
+
+                PycRef<ASTNode> map = stack.top();
+                /* Do not pop this */
+
+                if (map->type() == ASTNode::NODE_MAP) {
+                    map.cast<ASTMap>()->add(key, value);
+                } else {
+                    fprintf(stderr, "Something TERRIBLE happened!\n");
+                }
+            }
+            break;
         case Pyc::UNARY_CALL:
             {
                 PycRef<ASTNode> func = stack.top();
