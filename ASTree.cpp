@@ -1379,7 +1379,7 @@ PycRef<ASTNode> BuildFromCode(PycRef<PycCode> code, PycModule* mod)
                 }
                 curblock->append(new ASTRaise(paramList));
 
-                if ((curblock->blktype() == ASTBlock::BLK_IF
+                /*if ((curblock->blktype() == ASTBlock::BLK_IF
                         || curblock->blktype() == ASTBlock::BLK_ELSE)
                         && stack_hist.size()
                         && ((mod->majorVer() == 2 && mod->minorVer() >= 6) 
@@ -1393,7 +1393,7 @@ PycRef<ASTNode> BuildFromCode(PycRef<PycCode> code, PycModule* mod)
                     curblock->append(prev.cast<ASTNode>());
 
                     bc_next(source, mod, opcode, operand, pos);
-                }
+                }*/
             }
             break;
         case Pyc::RETURN_VALUE:
@@ -1402,7 +1402,7 @@ PycRef<ASTNode> BuildFromCode(PycRef<PycCode> code, PycModule* mod)
                 stack.pop();
                 curblock->append(new ASTReturn(value));
 
-                if ((curblock->blktype() == ASTBlock::BLK_IF
+                /*if ((curblock->blktype() == ASTBlock::BLK_IF
                         || curblock->blktype() == ASTBlock::BLK_ELSE)
                         && stack_hist.size()
                         && ((mod->majorVer() == 2 && mod->minorVer() >= 6) 
@@ -1416,7 +1416,7 @@ PycRef<ASTNode> BuildFromCode(PycRef<PycCode> code, PycModule* mod)
                     curblock->append(prev.cast<ASTNode>());
 
                     bc_next(source, mod, opcode, operand, pos);
-                }
+                }*/
             }
             break;
         case Pyc::ROT_TWO:
